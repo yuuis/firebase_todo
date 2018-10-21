@@ -95,11 +95,11 @@ export default {
   margin-bottom: 2%;
 }
 .new-task-name {
-  width: 10%;
+  width: 200px;
   margin: auto;
 }
 .filter-buttons {
-  width: 15%;
+  width: 200px;
   margin: auto;
   margin-bottom: 1%;
   display: flex;
@@ -109,11 +109,12 @@ export default {
   float: right;
 }
 .btn-primary {
-  width: 25%;
+  /* width: 25%; */
 }
 .list-group-item {
-  width: 20%;
+  width: 300px;
   text-align: center;
   margin: auto;
 }
+
 </style>
