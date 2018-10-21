@@ -6,9 +6,9 @@
       <button class="btn btn-success" type="submit" v-on:click="createTask()">create task</button>
     </div>
     <div class="filter-buttons">
-      <button class="btn btn-primary" type="submit" v-on:click="showTaskType = 'all'">all</button>
-      <button class="btn btn-primary" type="submit" v-on:click="showTaskType = 'active'">todo</button>
-      <button class="btn btn-primary" type="submit" v-on:click="showTaskType = 'complete'">done</button>
+      <button class="btn btn-primary" type="submit" v-on:click="showTaskType = 'all'">ALL</button>
+      <button class="btn btn-primary" type="submit" v-on:click="showTaskType = 'active'">TODO</button>
+      <button class="btn btn-primary" type="submit" v-on:click="showTaskType = 'complete'">DONE</button>
     </div>
     <div class="tasks">
       <ul v-for="(todo, key) in filteredTasks" class="list-unstyled list-group">
@@ -30,20 +30,20 @@ export default {
 
     var _this = this
     this.tasksRef.on('value', function (snapshot) {
-      _this.todos = snapshot.val()
+      _this.tasks = snapshot.val()
     })
   },
   computed: {
     filteredTasks: function () {
       if (this.showTaskType === 'all') {
-        return this.todos
+        return this.tasks
       } else {
         var showIsDone = false
         if (this.showTaskType === 'complete') { showIsDone = true }
         var filteredTasks = {}
-        for (var key in this.todos) {
-          var todo = this.todos[key]
-          if (todo.isDone === showIsDone) { filteredTasks[key] = todo }
+        for (var key in this.tasks) {
+          var task = this.tasks[key]
+          if (task.isDone === showIsDone) { filteredTasks[key] = task }
         }
         return filteredTasks
       }
@@ -75,7 +75,7 @@ export default {
       tasksRef: null,
       newTaskName: '',
       showTaskType: 'all',
-      todos: []
+      tasks: []
     }
   }
 }
