@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <h1>tasks</h1>
-    <div class="new-task-input">
-      <input type="text" v-model="newTaskName">
-      <button class="btn btn-success" type="submit" v-on:click="createTask()">create task</button>
+    <div class="form-inline">
+      <div class="new-task-input form-group">
+        <input type="text" class="new-task-name form-control" v-model="newTaskName" placeholder="task name">
+        <button class="btn btn-success" type="submit" v-on:click="createTask()">create task</button>
+      </div>
     </div>
     <div class="filter-buttons">
       <button class="btn btn-primary" type="submit" v-on:click="showTaskType = 'all'">ALL</button>
@@ -11,7 +13,7 @@
       <button class="btn btn-primary" type="submit" v-on:click="showTaskType = 'complete'">DONE</button>
     </div>
     <div class="tasks">
-      <ul v-for="(todo, key) in filteredTasks" class="list-unstyled list-group">
+      <ul v-for="(todo, key) in filteredTasks" class="list-unstyled list-group task">
         <li class="list-group-item"><input class="toggle" type="checkbox" v-model="todo.isDone" v-on:click="updateTask(todo, key)">{{todo.name}}
         <button class="btn btn-danger" type="submit" v-on:click="removeTask(key)">remove</button></li>
       </ul>
@@ -87,21 +89,31 @@ export default {
   text-align: center;
   margin-top: 5%;
 }
-.new-task-input {
+.form-inline {
+  display: flex;
+  justify-content: center;
   margin-bottom: 2%;
 }
-.filter-buttons {
-  margin-bottom: 1%;
+.new-task-name {
+  width: 10%;
+  margin: auto;
 }
-.tasks {
-
+.filter-buttons {
+  width: 15%;
+  margin: auto;
+  margin-bottom: 1%;
+  display: flex;
+  justify-content: space-around;
+}
+.btn-danger {
+  float: right;
+}
+.btn-primary {
+  width: 25%;
 }
 .list-group-item {
   width: 20%;
   text-align: center;
   margin: auto;
-}
-.btn-danger {
-  
 }
 </style>
