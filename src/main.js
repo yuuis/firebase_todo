@@ -5,7 +5,6 @@ import App from './App'
 import Firebase from 'firebase'
 
 Vue.config.productionTip = false
-console.log(process.env.FIRE_BASE)
 
 // initialize firebase
 var config = {
